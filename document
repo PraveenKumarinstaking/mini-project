@@ -59,7 +59,6 @@ Output is displayed in dashboard
 Component	Technology
 Frontend	HTML, CSS, JavaScript
 Backend	Python (FastAPI / Flask)
-Database	PostgreSQL / MongoDB
 ML Model	Scikit-learn / TensorFlow
 Tools	VS Code, GitHub
 7. ALGORITHM

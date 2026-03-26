@@ -21,7 +21,8 @@ A carbon-aware cloud computing framework that reduces energy consumption and COâ
 | Component   | Technology                     |
 |-------------|--------------------------------|
 | Frontend    | HTML, CSS, JavaScript, Chart.js |
-| Backend     | Python, Flask                  |
+| Backend     | Python (FastAPI / Flask)       |
+| Server      | Uvicorn (ASGI)                 |
 | ML Model    | Scikit-learn (Linear Regression) |
 | Database    | In-memory (Python)             |
 | Tools       | VS Code, GitHub                |
@@ -58,8 +59,10 @@ mini project/
 # Install dependencies
 pip install -r requirements.txt
 
-# Run the application
+# Run the application (FastAPI)
 python app.py
+# OR
+uvicorn app:app --port 5000
 ```
 
 ### Access
