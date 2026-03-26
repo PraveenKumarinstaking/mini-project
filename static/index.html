@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Cloud Framework | Carbon-Aware Scheduling</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="bg-particles">
+        <div class="particle p1"></div>
+        <div class="particle p2"></div>
+        <div class="particle p3"></div>
+        <div class="particle p4"></div>
+        <div class="particle p5"></div>
+    </div>
+
+    <!-- ══════════════ NAVBAR ══════════════ -->
+    <nav id="navbar">
+        <div class="nav-brand">
+            <span class="nav-icon">🌿</span>
+            <span class="nav-title">GreenCloud Framework</span>
+        </div>
+        <div class="nav-links">
+            <a href="#metrics-section">Metrics</a>
+            <a href="#scheduling-section">Scheduler</a>
+            <a href="#datacenters-section">Data Centers</a>
+            <a href="#history-section">Task History</a>
+        </div>
+        <div class="nav-status">
+            <div class="status-dot"></div>
+            <span>System Online</span>
+        </div>
+    </nav>
+
+    <!-- ══════════════ HERO SECTION ══════════════ -->
+    <header id="hero">
+        <div class="hero-content fade-in">
+            <h1>Energy-Efficient Cloud Scheduling</h1>
+            <p class="hero-subtitle">Optimize your workloads for low carbon emissions. Intelligent, carbon-aware task routing powered by Machine Learning.</p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-value" id="stat-carbon-saved">0.00</span>
+                    <span class="hero-stat-label">kg CO₂ Saved</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-value" id="stat-efficiency">0%</span>
+                    <span class="hero-stat-label">Efficiency Gain</span>
+                </div>
+            </div>
+            <div style="margin-top:2.5rem">
+                <a href="#scheduling-section" style="background:var(--green-500);color:#fff;padding:.8rem 2rem;border-radius:30px;text-decoration:none;font-weight:600;box-shadow:0 10px 20px var(--green-glow)">Start Scheduling</a>
+            </div>
+        </div>
+    </header>
+
+
+
+<!-- ══════════════ METRICS CARDS ══════════════ -->
+<section id="metrics-section" class="section">
+    <h2 class="section-title">
+        <span class="section-icon">📊</span> Live Metrics
+    </h2>
+    <div class="metrics-grid">
+        <div class="metric-card card-green fade-in" style="animation-delay:.1s">
+            <div class="metric-icon">🌱</div>
+            <div class="metric-value"><span id="metric-total-carbon">0.000</span> <small>kg</small></div>
+            <div class="metric-label">Total Carbon Emission</div>
+            <div class="metric-bar"><div class="metric-bar-fill green-fill" style="width:75%"></div></div>
+        </div>
+        <div class="metric-card card-blue fade-in" style="animation-delay:.2s">
+            <div class="metric-icon">⚡</div>
+            <div class="metric-value"><span id="metric-total-energy">0.00</span> <small>kWh</small></div>
+            <div class="metric-label">Total Energy Consumption</div>
+            <div class="metric-bar"><div class="metric-bar-fill blue-fill" style="width:60%"></div></div>
+        </div>
+        <div class="metric-card card-purple fade-in" style="animation-delay:.3s">
+            <div class="metric-icon">☁️</div>
+            <div class="metric-value"><span id="metric-total-tasks">0</span></div>
+            <div class="metric-label">Tasks Synchronized</div>
+            <div class="metric-bar"><div class="metric-bar-fill purple-fill" style="width:85%"></div></div>
+        </div>
+        <div class="metric-card card-amber fade-in" style="animation-delay:.4s">
+            <div class="metric-icon">📉</div>
+            <div class="metric-value"><span id="metric-avg-intensity">0</span> <small>g/kWh</small></div>
+            <div class="metric-label">Avg. Carbon Intensity</div>
+            <div class="metric-bar"><div class="metric-bar-fill amber-fill" style="width:40%"></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════ CHARTS & FORM ══════════════ -->
+<section id="scheduling-section" class="section">
+    <div class="two-col">
+        <!-- Live Carbon Timeline -->
+        <div class="card chart-card fade-in">
+            <div class="card-title">Carbon Intensity Timeline (gCO₂/kWh)</div>
+            <div class="chart-wrapper">
+                <canvas id="carbon-chart"></canvas>
+            </div>
+        </div>
+
+        <!-- Task Submission Form -->
+        <div class="card form-card fade-in" style="animation-delay:.2s">
+            <div class="card-title">Schedule New Cloud Task</div>
+            <form id="task-form">
+                <div class="form-group">
+                    <label>Task Name</label>
+                    <input type="text" id="task-name" placeholder="e.g. Data Analysis Pipeline" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>CPU Usage (%)</label>
+                        <input type="range" id="task-cpu" min="10" max="100" value="50">
+                        <span class="range-value" id="cpu-val">50%</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Mem Usage (GB)</label>
+                        <input type="range" id="task-mem" min="1" max="64" value="8">
+                        <span class="range-value" id="mem-val">8 GB</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Duration (Minutes)</label>
+                    <input type="number" id="task-duration" value="30" min="1">
+                </div>
+                <button type="submit" id="submit-btn" class="fade-in">Schedule Task</button>
+                <div id="form-result" class="result-toast" style="display:none"></div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════ DATA CENTERS ══════════════ -->
+<section id="datacenters-section" class="section">
+    <h2 class="section-title">
+        <span class="section-icon">🌐</span> Global Data Centers
+    </h2>
+    <div class="dc-grid" id="dc-container">
+        <!-- DC cards will be injected here -->
+    </div>
+</section>
+
+<!-- ══════════════ TASK HISTORY ══════════════ -->
+<section id="history-section" class="section">
+    <h2 class="section-title">
+        <span class="section-icon">📜</span> Task History
+    </h2>
+    <div class="card table-card fade-in">
+        <div class="table-wrapper">
+            <table id="task-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Task Name</th>
+                        <th>Energy (kWh)</th>
+                        <th>Intensity</th>
+                        <th>Emission (kg)</th>
+                        <th>Data Center</th>
+                        <th>Status</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody id="task-body">
+                    <!-- Rows will be injected here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════ MODEL INFO ══════════════ -->
+<section class="section">
+    <div class="card model-card fade-in">
+        <h3 style="margin-bottom:1rem">Predictive ML Model Info</h3>
+        <div class="model-grid" id="model-info">
+            <!-- Model info items -->
+        </div>
+    </div>
+</section>
+
+<footer id="footer">
+    <p>&copy; 2026 Green Cloud Framework – Mini Project</p>
+    <p class="footer-sub">Leveraging ML for sustainable cloud computing</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
